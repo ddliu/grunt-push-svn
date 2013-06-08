@@ -79,3 +79,4 @@ grunt.initConfig({
 ## Release History
 - 0.1.0 - Initial release
 - 0.1.1 - Fix dependencies
+- 0.1.2 - Force ignore .svn from src

@@ -25,7 +25,7 @@ module.exports = function(grunt) {
     var options = this.options({
           remove: false,
           message: 'committed with grunt-push-svn',
-          // pushIgnore: '',
+          pushIgnore: [],
           removeIgnore: [],
         }),
         done = this.async(),
@@ -34,12 +34,18 @@ module.exports = function(grunt) {
         tmpPath,
         svn;
 
+    // .svn should be ignored
     if (options.remove) {
       if (!util.isArray(options.removeIgnore)) {
         options.removeIgnore = [options.removeIgnore];
       }
       options.removeIgnore.push('**/.svn/**');
     }
+
+    if (!util.isArray(options.pushIgnore)) {
+      options.pushIgnore = [options.pushIgnore];
+    }
+    options.pushIgnore.push('**/.svn/**');
 
     if ('tmp' in this.data) {
       tmpPath = this.data.tmp;
