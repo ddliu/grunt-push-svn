@@ -58,6 +58,8 @@ module.exports = function(grunt) {
       cwd: tmpPath
     });
 
+    grunt.log.subhead('push_svn task: %s --> %s --> %s', src, tmpPath, dest);
+
     async.series([
       // make sure tmpPath exists
       function(callback) {
@@ -77,7 +79,7 @@ module.exports = function(grunt) {
       },
       // prepare a svn working directory
       function(callback) {
-        grunt.log.writeln('Prepare tmp svn working copy...');
+        grunt.log.writeln(util.format('Prepare tmp svn working copy [%s]: [%s]...', tmpPath, dest));
         svn.getInfo(function(err, data) {
           if (err) {
             // not empty
