@@ -45,7 +45,7 @@ module.exports = function(grunt) {
     if (!util.isArray(options.pushIgnore)) {
       options.pushIgnore = [options.pushIgnore];
     }
-    options.pushIgnore.push('**/.svn/**');
+    options.pushIgnore.push('**/.svn/**', '**/.git/**');
 
     if ('tmp' in this.data) {
       tmpPath = this.data.tmp;
