@@ -59,6 +59,10 @@ Default value: `[]`
 
 Specify exclude patterns for local files.
 
+#### options.message
+Type: `String`
+Default value: `"committed with grunt-push-svn"`
+
 ### Usage Examples
 
 #### Deploy code to SAE or BAE
