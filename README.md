@@ -86,3 +86,4 @@ grunt.initConfig({
 - 0.1.2 - Force ignore .svn from src
 - 0.1.3 - Check src existence; Print friendly message
 - 0.1.4 - Ignore .svn and .git files
+- 0.1.5 - Fix ignore files on windows

@@ -27,7 +27,7 @@ function testIgnore(path, list) {
   }
   else {
     list = list.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-    var re = new RegExp('^(.*[\\/])?' + list + '([\\/].*)?$');
+    var re = new RegExp('^(.*[\\\\/])?' + list + '([\\\\/].*)?$');
     return re.test(path);
   }
 }
