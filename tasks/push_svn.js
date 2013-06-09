@@ -16,6 +16,22 @@ var async = require('async');
 var fs = require('fs');
 var util = require('util');
 
+function testIgnore(path, list) {
+  if (util.isArray(list)) {
+    for (var i = list.length - 1; i >= 0; i--) {
+      if (testIgnore(path, list[i])) {
+        return true;
+      }
+    }
+    return false;
+  }
+  else {
+    list = list.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+    var re = new RegExp('^(.*[\\/])?' + list + '([\\/].*)?$');
+    return re.test(path);
+  }
+}
+
 module.exports = function(grunt) {
 
   // Please see the Grunt documentation for more information regarding task
@@ -34,18 +50,19 @@ module.exports = function(grunt) {
         tmpPath,
         svn;
 
-    // .svn should be ignored
     if (options.remove) {
       if (!util.isArray(options.removeIgnore)) {
         options.removeIgnore = [options.removeIgnore];
       }
-      options.removeIgnore.push('**/.svn/**');
+      // it does not work
+      // options.removeIgnore.push('**/.svn/**');
     }
 
     if (!util.isArray(options.pushIgnore)) {
       options.pushIgnore = [options.pushIgnore];
     }
-    options.pushIgnore.push('**/.svn/**', '**/.git/**');
+    // it does not work
+    // options.pushIgnore.push('**/.svn/**', '**/.git/**');
 
     if ('tmp' in this.data) {
       tmpPath = this.data.tmp;
@@ -113,6 +130,9 @@ module.exports = function(grunt) {
               subdir = '';
             }
             var subPath = path.join(subdir, filename);
+            if (testIgnore(subPath, ['.svn', '.git'])) {
+              return;
+            }
 
             if (
               !grunt.file.exists(path.join(src, subPath)) && 
@@ -135,6 +155,10 @@ module.exports = function(grunt) {
               destFile = path.join(tmpPath, subPath),
               srcStats = fs.statSync(srcFile),
               destStats;
+
+          if (testIgnore(subPath, ['.svn', '.git'])) {
+            return;
+          }
 
           if (!options.pushIgnore || !grunt.file.isMatch(options.pushIgnore, subPath)) {
             // dir

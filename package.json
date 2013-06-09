@@ -1,7 +1,7 @@
 {
   "name": "grunt-push-svn",
   "description": "Push local directory to a specified SVN server",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "homepage": "https://github.com/ddliu/grunt-push-svn",
   "author": {
     "name": "Dong",
