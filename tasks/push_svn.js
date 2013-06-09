@@ -60,6 +60,11 @@ module.exports = function(grunt) {
 
     grunt.log.subhead('push_svn task: %s --> %s --> %s', src, tmpPath, dest);
 
+    // validate src
+    if (!grunt.file.isDir(src)) {
+      grunt.fail.warn(util.format('src is not a valid dir: "%s"', src));
+    }
+
     async.series([
       // make sure tmpPath exists
       function(callback) {
