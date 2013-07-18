@@ -2,8 +2,10 @@
 
 > Push local directory to a specified SVN server
 
+
 ## Getting Started
-This plugin requires Grunt `~0.4.1`
+
+This plugin requires `svn` command line and Grunt `~0.4.1`.
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
@@ -67,7 +69,7 @@ Default value: `"committed with grunt-push-svn"`
 
 #### Deploy code to SAE or BAE
 
-Deployment of SAE or BAE are based on SVN, so grunt-push-svn is just the perfect thing to help you do that.
+Deployment of SAE or BAE are based on SVN, so grunt-push-svn is just the perfect tool to help you do that.
 
 ```js
 grunt.initConfig({
@@ -87,3 +89,4 @@ grunt.initConfig({
 - 0.1.3 - Check src existence; Print friendly message
 - 0.1.4 - Ignore .svn and .git files
 - 0.1.5 - Fix ignore files on windows
+- 0.1.6 - Update readme
