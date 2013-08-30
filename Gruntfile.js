@@ -60,6 +60,14 @@ module.exports = function(grunt) {
         src: 'test/src/test',
         dest: 'file:///home/dong/projects/test/test-svn-trunk',
         tmp: 'tmp/.build/test'
+      },
+      testmkdir: {
+        options: {
+          trymkdir: true,
+        },
+        src: 'test/src/main',
+        dest: 'file:///home/dong/projects/test/test-svn-trunk/1',
+        tmp: 'tmp/.build/mkdir'
       }
     },
 

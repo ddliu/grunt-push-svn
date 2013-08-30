@@ -65,6 +65,12 @@ Specify exclude patterns for local files.
 Type: `String`
 Default value: `"committed with grunt-push-svn"`
 
+#### options.trymkdir
+Type: `Boolean`
+Default value: `false`
+
+Try to mkdir in remote repo if dest does not exist.
+
 ### Usage Examples
 
 #### Deploy code to SAE or BAE
@@ -90,3 +96,4 @@ grunt.initConfig({
 - 0.1.4 - Ignore .svn and .git files
 - 0.1.5 - Fix ignore files on windows
 - 0.1.6 - Update readme
+- 0.1.7 - Add option `trymkdir`

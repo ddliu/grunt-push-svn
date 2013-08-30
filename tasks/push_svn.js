@@ -37,10 +37,11 @@ module.exports = function(grunt) {
   // Please see the Grunt documentation for more information regarding task
   // creation: http://gruntjs.com/creating-tasks
 
-  grunt.registerMultiTask('push_svn', 'Your task description goes here.', function() {
+  grunt.registerMultiTask('push_svn', 'Push local directory to a specified SVN server.', function() {
     var options = this.options({
           remove: false,
           message: 'committed with grunt-push-svn',
+          trymkdir: false,
           pushIgnore: [],
           removeIgnore: [],
         }),
@@ -109,7 +110,25 @@ module.exports = function(grunt) {
               callback(err);
             }
             else {
-              svn.checkout(dest, callback);
+              svn.checkout(dest, function(err, data) {
+                if (err) {
+                  // try to mkdir if checkout a none-exist dir
+                  if (options.trymkdir && err.message.indexOf('E170000') != false) {
+                    grunt.log.writeln("Try mkdir in remote repository...");
+                    svn.cmd(['mkdir', dest, '-m', '[grunt-push-svn] try mkdir'], function(err, data) {
+                      if (err) {
+                        callback(err, data);
+                      }
+                      else {
+                        svn.checkout(dest, callback);
+                      }
+                    });
+                  }
+                  else {
+                    callback(err);
+                  }
+                }
+              });
             }
           }
           else if (data.url !== dest) {
