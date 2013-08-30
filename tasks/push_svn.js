@@ -26,7 +26,8 @@ function testIgnore(path, list) {
     return false;
   }
   else {
-    list = list.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+    // escape regexp: http://stackoverflow.com/questions/3561493/is-there-a-regexp-escape-function-in-javascript
+    list = list.replace(/[\-\/\\\^\$\*\+\?\.\(\)\|\[\]\{\}]/g, '\\$&');
     var re = new RegExp('^(.*[\\\\/])?' + list + '([\\\\/].*)?$');
     return re.test(path);
   }
@@ -113,7 +114,7 @@ module.exports = function(grunt) {
               svn.checkout(dest, function(err, data) {
                 if (err) {
                   // try to mkdir if checkout a none-exist dir
-                  if (options.trymkdir && err.message.indexOf('E170000') != false) {
+                  if (options.trymkdir && err.message.indexOf('E170000') !== false) {
                     grunt.log.writeln("Try mkdir in remote repository...");
                     svn.cmd(['mkdir', dest, '-m', '[grunt-push-svn] try mkdir'], function(err, data) {
                       if (err) {
@@ -127,6 +128,9 @@ module.exports = function(grunt) {
                   else {
                     callback(err);
                   }
+                }
+                else {
+                  callback(err, data);
                 }
               });
             }

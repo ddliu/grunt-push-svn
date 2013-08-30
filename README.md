@@ -1,5 +1,7 @@
 # grunt-push-svn
 
+[![Build Status](https://travis-ci.org/ddliu/grunt-push-svn.png)](https://travis-ci.org/ddliu/grunt-push-svn)
+
 > Push local directory to a specified SVN server
 
 
@@ -97,3 +99,4 @@ grunt.initConfig({
 - 0.1.5 - Fix ignore files on windows
 - 0.1.6 - Update readme
 - 0.1.7 - Add option `trymkdir`
+- 0.1.8 - Fix checkout bug; travis-ci
