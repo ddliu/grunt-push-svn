@@ -4,3 +4,4 @@ node_js:
 before_install:
   - "sudo apt-get update -qq"
   - "sudo apt-get install -qq subversion"
+  - "sudo npm install -g grunt-cli"
