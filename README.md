@@ -45,6 +45,14 @@ grunt.initConfig({
 
 ### Options
 
+#### options.username
+Default value: undefined
+
+If the target repo need authentication and you don't have the authentication saved, set username and password in Options.
+
+#### options.password
+Type: `String`
+
 #### options.remove
 Type: `Boolean`
 Default value: `false`
@@ -90,17 +98,44 @@ grunt.initConfig({
 })
 ```
 
-## TODO
-
-- Support authontication
-
 ## Release History
-- 0.1.0 - Initial release
-- 0.1.1 - Fix dependencies
-- 0.1.2 - Force ignore .svn from src
-- 0.1.3 - Check src existence; Print friendly message
-- 0.1.4 - Ignore .svn and .git files
-- 0.1.5 - Fix ignore files on windows
-- 0.1.6 - Update readme
-- 0.1.7 - Add option `trymkdir`
-- 0.1.8 - Fix checkout bug; travis-ci
+
+### v0.1.0 (2013-06-07)
+
+Initial release
+
+### v0.1.1 (2013-06-08)
+
+Fix dependencies
+
+### v0.1.2 (2013-06-08)
+
+Force ignore .svn from src
+
+### v0.1.3 (2013-06-09)
+
+Check src existence; Print friendly message
+
+### v0.1.4 (2013-06-09)
+
+Ignore .svn and .git files
+
+### v0.1.5 (2013-06-09)
+
+Fix ignore files on windows
+
+### v0.1.6 (2013-07-18)
+
+Update readme
+
+### v0.1.7 (2013-08-29)
+
+Add option `trymkdir`
+
+### v0.1.8 (2013-08-30)
+
+Fix checkout bug; travis-ci
+
+### v0.1.9 (2013-12-12)
+
+Add authontication support

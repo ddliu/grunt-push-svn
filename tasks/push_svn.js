@@ -50,7 +50,8 @@ module.exports = function(grunt) {
         src = this.data.src,
         dest = this.data.dest,
         tmpPath,
-        svn;
+        svn,
+        svnOptions;
 
     if (options.remove) {
       if (!util.isArray(options.removeIgnore)) {
@@ -73,9 +74,18 @@ module.exports = function(grunt) {
       tmpPath = path.join(os.tmpdir(), 'push_svn_' + crypto.createHash('md5').update(JSON.stringify(this.data)).digest('hex'));
     }
 
-    svn = new SVN({
+    svnOptions = {
       cwd: tmpPath
-    });
+    };
+
+    if (options.username) {
+      svnOptions.username = options.username;
+    }
+    if (options.password) {
+      svnOptions.password = options.password;
+    }
+
+    svn = new SVN(svnOptions);
 
     grunt.log.subhead('push_svn task: %s --> %s --> %s', src, tmpPath, dest);
 
