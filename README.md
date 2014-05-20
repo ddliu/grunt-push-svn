@@ -81,6 +81,12 @@ Default value: `false`
 
 Try to mkdir in remote repo if dest does not exist.
 
+#### options.svn
+Type: `String`
+Default value: `"svn"`
+
+Path to svn
+
 ### Usage Examples
 
 #### Deploy code to SAE or BAE
