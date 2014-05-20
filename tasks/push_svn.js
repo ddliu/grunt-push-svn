@@ -45,6 +45,7 @@ module.exports = function(grunt) {
           trymkdir: false,
           pushIgnore: [],
           removeIgnore: [],
+          svnPath: 'svn'
         }),
         done = this.async(),
         src = this.data.src,
@@ -75,7 +76,8 @@ module.exports = function(grunt) {
     }
 
     svnOptions = {
-      cwd: tmpPath
+      cwd: tmpPath,
+      program:  options.svnPath
     };
 
     if (options.username) {
