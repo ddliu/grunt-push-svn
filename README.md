@@ -81,11 +81,11 @@ Default value: `false`
 
 Try to mkdir in remote repo if dest does not exist.
 
-#### options.svn
+#### options.svnPath
 Type: `String`
 Default value: `"svn"`
 
-Path to svn
+Path to svn(optional)
 
 ### Usage Examples
 
@@ -145,3 +145,7 @@ Fix checkout bug; travis-ci
 ### v0.1.9 (2013-12-12)
 
 Add authontication support
+
+### v0.2.0 (2014-05-20)
+
+Add option `svnPath`
