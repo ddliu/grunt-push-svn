@@ -149,3 +149,7 @@ Add authontication support
 ### v0.2.0 (2014-05-20)
 
 Add option `svnPath`
+
+### v0.2.1 (2014-05-23)
+
+Make `trymkdir` recursive

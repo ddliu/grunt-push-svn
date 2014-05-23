@@ -2,7 +2,7 @@
  * grunt-push-svn
  * https://github.com/ddliu/grunt-push-svn
  *
- * Copyright (c) 2013 Dong
+ * Copyright (c) 2013-2014 Dong <ddliuhb@gmail.com>
  * Licensed under the MIT license.
  */
 
@@ -73,7 +73,7 @@ module.exports = function(grunt) {
           trymkdir: true,
         },
         src: 'test/src/main',
-        dest: 'file://<%= repoDir %>/1',
+        dest: 'file://<%= repoDir %>/1/2',
         tmp: 'tmp/build/mkdir'
       }
     }

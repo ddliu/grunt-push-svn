@@ -2,7 +2,7 @@
  * grunt-push-svn
  * https://github.com/ddliu/grunt-push-svn
  *
- * Copyright (c) 2013 Dong
+ * Copyright (c) 2013-2014 Dong <ddliuhb@gmail.com>
  * Licensed under the MIT license.
  */
 
@@ -128,7 +128,7 @@ module.exports = function(grunt) {
                   // try to mkdir if checkout a none-exist dir
                   if (options.trymkdir && err.message.indexOf('E170000') !== false) {
                     grunt.log.writeln("Try mkdir in remote repository...");
-                    svn.cmd(['mkdir', dest, '-m', '[grunt-push-svn] try mkdir'], function(err, data) {
+                    svn.cmd(['mkdir', dest, '--parents', '-m', '[grunt-push-svn] try mkdir'], function(err, data) {
                       if (err) {
                         callback(err, data);
                       }
